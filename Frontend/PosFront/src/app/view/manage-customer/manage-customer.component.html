@@ -1,0 +1,129 @@
+
+
+
+<div class="row">
+  <div class="col-sm-3"><app-main></app-main></div>
+  <div class="col-sm-9">
+    <div style="background-color: lightblue">
+      <div  class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Manage Customers</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Manage Customers</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section  class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div style="background-color: rgba(212,212,212,0.72);margin-right: 20px;margin-left: 20px" class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Customer Information</h3>
+
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" style="width: 100%">
+                  <div class="row">
+                    <div class="col col-12">
+                      <form  >
+
+
+                        <label for="txtId">Customer ID</label> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <!--<input type="checkbox" id="checkBox" name="checkBox" (click)="check()" >-->
+                        <table>
+                          <tr>
+                            <td>
+                              <input style="width: 80%" name="txtId" id="txtId" class="form-control">
+                            </td>
+                            <td>
+                              <button  type="button" class="btn btn-danger">Search Customer</button>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <p class="form-group">
+                          <label for="txtName">Customer Name</label>
+                          <input name="txtName"  id="txtName" class="form-control">
+                        </p>
+
+                        <p class="form-group">
+                          <label for="txtAddress">Customer Address</label>
+                          <input  name="txtAddress"  id="txtAddress"
+                                  class="form-control">
+                        </p>
+                        <div>
+                          <button type="button"  class="btn btn-info">Save Customer</button>
+                          &nbsp;
+                          <button  type="button" class="btn btn-danger">Clear</button>
+                          &nbsp;
+                          <button type="button" class="btn btn-success">Update Customer</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table id="tblCustomers" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Customer Name</th>
+                  <th>Customer Address</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr >
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <i class="fa fa-trash fa-2x"></i>
+                  </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="4">
+
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
