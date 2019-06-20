@@ -8,8 +8,13 @@ import { ItemsComponent } from './view/items/items.component';
 import { OrderComponent } from './view/order/order.component';
 import { MainComponent } from './view/main/main.component';
 import {RouterModule, Routes} from "@angular/router";
+import {DashboardComponent} from "./view/dashboard/dashboard.component";
 
 const  routes : Routes =[
+  {
+    path : 'Dashboard',
+    component: DashboardComponent
+  },
   {
     path : 'Customer',
     component: ManageCustomerComponent
@@ -21,6 +26,10 @@ const  routes : Routes =[
   {
     path: 'order',
     component: OrderComponent
+  },
+  {
+    path : '',
+    component: DashboardComponent
   }
 ]
 
@@ -30,7 +39,8 @@ const  routes : Routes =[
     ManageCustomerComponent,
     ItemsComponent,
     OrderComponent,
-    MainComponent
+    MainComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
