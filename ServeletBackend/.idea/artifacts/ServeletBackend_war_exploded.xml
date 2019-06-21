@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ServeletBackend:war exploded">
+    <output-path>$PROJECT_DIR$/../ServeletBackend/out/artifacts/ServeletBackend_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ServeletBackend/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ServeletBackend" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-dbcp2-2.6.0" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
