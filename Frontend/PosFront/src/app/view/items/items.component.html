@@ -38,35 +38,32 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col col-12">
-                      <form  name="myForm">
+                      <form (ngSubmit)="saveItems()" #frmItem="ngForm">
                         <p class="form-group">
-                          <label for="txtId">Item Code</label>
-                          <input [disabled]="manuallySelected" name="txtCode"  id="txtId"
-                                 class="form-control">
+                          <label >Item Code</label>
+                          <input #txtcode name="txtId" [(ngModel)]="selectedItem.code" class="form-control" type="text">
                         </p>
 
                         <p class="form-group">
-                          <label for="txtDiscription">Discriptione</label>
-                          <input name="txtDiscription"  id="txtDiscription" class="form-control">
+                          <label >Discriptione</label>
+                          <input name="txtName" class="form-control" type="text" [(ngModel)]="selectedItem.description">
                         </p>
 
                         <p class="form-group">
-                          <label for="txtunicPrice">Unic Price</label>
-                          <input name="txtunicPrice" id="txtunicPrice" type="number"
-                                 class="form-control">  <span ng-show="myForm.price.$error.price"></span>
+                          <label >Unit Price</label>
+                          <input name="txtUnitPrice" class="form-control" type="text" [(ngModel)]="selectedItem.unitPrice">
                         </p>
 
                         <p class="form-group">
-                          <label for="txtQtyOnHand">QtyOnHand</label>
-                          <input name="txtQtyOnHand"  name="qty" id="txtQtyOnHand" type="number"
-                                 class="form-control"><span ng-show="myForm.qty.$error.qty"></span>
+                          <label>QtyOnHand</label>
+                          <input name="txtAddress" class="form-control" type="text" [(ngModel)]="selectedItem.qty">
                         </p>
                         <div>
-                          <button type="submit" class="btn btn-info">Save Item</button>
+                          <button  type="submit" class="btn btn-success" id="btnsaveitem"><b>Save</b></button>
                           &nbsp;
                           <button  type="button" class="btn btn-danger ">Clear</button>
                           &nbsp;
-                          <button  type="button" class="btn btn-success">Update Item</button>
+                          <button type="button" class="btn btn-warning" (click)="updateItems()">Edit</button>
 
 
                         </div>
@@ -101,10 +98,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
-
+                <tr *ngFor="let itemss of ite" (click)="tableRow_Click_Item(itemss)">
+                  <td>{{itemss.code}}</td>
+                  <td>{{itemss.description}}</td>
+                  <td>{{itemss.unitPrice}}</td>
+                  <td>{{itemss.qty}}</td>
                   <td>
-                    <i  class="fa fa-trash fa-2x"></i>
+                    <i (click)="deleteItem(itemss.code)" class="fa fa-trash fa-2x"></i>
+                    <button style="background-color: red" (click)="deleteItem(itemss.code)"> delete</button>
                   </td>
                 </tr>
                 </tbody>

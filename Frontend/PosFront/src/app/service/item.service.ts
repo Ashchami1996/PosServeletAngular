@@ -9,15 +9,15 @@ import {environment} from "../../environments/environment";
 })
 export class ItemService {
 
-  readonly baseUrl = environment.apiUrl + '/Items';
-  readonly baseUrl1 = environment.apiUrl + '/Items?code=';
+  readonly baseUrl = environment.apiUrl + '/items';
+  readonly baseUrl1 = environment.apiUrl + '/items?code=';
 
   constructor(private http: HttpClient) {
 
   }
 
   getAllItems(): Observable<Item[]>{
-    return this.http.get<Item[]>('http://localhost:8080/pos/Items');
+    return this.http.get<Item[]>('http://localhost:8080/pos/items');
   }
 
   saveItems(item: Item): Observable<boolean> {

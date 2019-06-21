@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Item} from "../../dto/ItemDto";
 import {NgForm} from "@angular/forms";
 import {ItemService} from "../../service/item.service";
+import ObjectContaining = jasmine.ObjectContaining;
 
 @Component({
   selector: 'app-items',
