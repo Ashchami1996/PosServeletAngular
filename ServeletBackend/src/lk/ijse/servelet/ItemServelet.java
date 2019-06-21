@@ -2,6 +2,7 @@ package lk.ijse.servelet;
 
 import javax.annotation.Resource;
 import javax.json.*;
+import javax.json.stream.JsonParsingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -138,8 +139,51 @@ public class ItemServelet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameter("code"));
+        System.out.println(req.getParameter("unitPrice"));
+        System.out.println(req.getParameter("description"));
+        if (req.getParameter("code") != null) {
 
+            try {
+                JsonReader reader = Json.createReader(req.getReader());
+                JsonObject item = reader.readObject();
+                System.out.println(req.getParameter("code"));
+                String code = item.getString("code");
+                String description = item.getString("description");
+                String unitPrice = item.getString("unitPrice");
+                Integer qtyOnHand = Integer.parseInt(item.getString("qtyOnHand"));
+                System.out.println(req.getParameter("code")+ code);
+                if (!code.equals(req.getParameter("code"))) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                    return;
+                }
+
+                Connection connection = ds.getConnection();
+                PreparedStatement pstm = connection.prepareStatement("UPDATE item SET description=?, unitPrice=?,qty=?  WHERE code=?");
+                pstm.setObject(4,code);
+                pstm.setObject(3,qtyOnHand);
+                pstm.setObject(2,unitPrice);
+                pstm.setObject(1,description);
+                int affectedRows = pstm.executeUpdate();
+
+                if (affectedRows > 0) {
+                    resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                } else {
+                    resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                }
+
+            } catch (JsonParsingException | NullPointerException ex) {
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            } catch (Exception ex) {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+
+
+        } else {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
+
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
