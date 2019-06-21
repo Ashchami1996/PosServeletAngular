@@ -2,6 +2,7 @@ package lk.ijse.servelet;
 
 import javax.annotation.Resource;
 import javax.json.*;
+import javax.json.stream.JsonParsingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -111,21 +112,21 @@ public class CustomerServelet extends HttpServlet {
             pstm.setObject(1, id);
             pstm.setObject(2, name);
             pstm.setObject(3, address);
-            boolean result = pstm.executeUpdate()>0;
+            boolean result = pstm.executeUpdate() > 0;
 
-            if (result){
+            if (result) {
                 out.println("true");
-            }else{
+            } else {
                 out.println("false");
             }
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             out.println("false");
-        }finally {
+        } finally {
             try {
                 connection.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
             out.close();
@@ -135,8 +136,49 @@ public class CustomerServelet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameter("id"));
+        System.out.println(req.getParameter("name"));
+        System.out.println(req.getParameter("address"));
+        if (req.getParameter("id") != null) {
 
+            try {
+                JsonReader reader = Json.createReader(req.getReader());
+                JsonObject customer = reader.readObject();
+                System.out.println(req.getParameter("id"));
+                String id = customer.getString("id");
+                String name = customer.getString("name");
+                String address = customer.getString("address");
+                System.out.println(req.getParameter("id")+ id);
+                if (!id.equals(req.getParameter("id"))) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                    return;
+                }
+
+                Connection connection = ds.getConnection();
+                PreparedStatement pstm = connection.prepareStatement("UPDATE Customer SET name=?, address=? WHERE cid =?");
+                pstm.setObject(3, id);
+                pstm.setObject(1, name);
+                pstm.setObject(2, address);
+                int affectedRows = pstm.executeUpdate();
+
+                if (affectedRows > 0) {
+                    resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                } else {
+                    resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                }
+
+            } catch (JsonParsingException | NullPointerException ex) {
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            } catch (Exception ex) {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+
+
+        } else {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
+
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
