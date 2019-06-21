@@ -1,10 +1,7 @@
 package lk.ijse.servelet;
 
 import javax.annotation.Resource;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
+import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 @WebServlet(urlPatterns = "/Items")
 public class ItemServelet extends HttpServlet {
@@ -75,14 +69,14 @@ public class ItemServelet extends HttpServlet {
                         String code = rst.getString("code");
                         String description = rst.getString("description");
                         String unitPrice = rst.getString("unitPrice");
-                        String qtyOnHand = String.valueOf((rst.getInt("qtyOnHand")));
+                        String qtyOnHand = String.valueOf((rst.getInt("qty")));
 
 
                         JsonObject item = Json.createObjectBuilder()
                                 .add("code", code)
                                 .add("description", description)
                                 .add("unitPrice",unitPrice)
-                                .add("qtyOnHand", qtyOnHand)
+                                .add("qty", qtyOnHand)
                                 .build();
                         items.add(item);
                     }
@@ -101,6 +95,45 @@ public class ItemServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        JsonReader reader = Json.createReader(req.getReader());
+        resp.setContentType("application/json");
+
+        PrintWriter out = resp.getWriter();
+
+        Connection connection = null;
+
+        try {
+            JsonObject item = reader.readObject();
+            String code = item.getString("code");
+            String description = item.getString("description");
+            String unitPrice = item.getString("unitPrice");
+            Integer qtyOnHand = Integer.parseInt(item.getString("qtyOnHand"));
+            connection = ds.getConnection();
+
+            PreparedStatement pstm = connection.prepareStatement("INSERT INTO item VALUES (?,?,?,?)");
+            pstm.setObject(1, code);
+            pstm.setObject(2, description);
+            pstm.setObject(3, unitPrice);
+            pstm.setObject(4, qtyOnHand);
+            boolean result = pstm.executeUpdate() > 0;
+
+            if (result) {
+                out.println("true");
+            } else {
+                out.println("false");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            out.println("false");
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            out.close();
+        }
     }
 
     @Override
