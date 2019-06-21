@@ -37,7 +37,7 @@
                 <div class="card-body" style="width: 100%">
                   <div class="row">
                     <div class="col col-12">
-                      <form  >
+                      <form (ngSubmit)="saveCustomer()" #frmCustomer="ngForm">
 
 
                         <label for="txtId">Customer ID</label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,7 +46,7 @@
                         <table>
                           <tr>
                             <td>
-                              <input style="width: 80%" name="txtId" id="txtId" class="form-control">
+                              <input style="width: 80%" name="txtId" id="txtId" [(ngModel)]="selectedCustomer.id" class="form-control">
                             </td>
                             <td>
                               <button  type="button" class="btn btn-danger">Search Customer</button>
@@ -56,26 +56,29 @@
 
                         <p class="form-group">
                           <label for="txtName">Customer Name</label>
-                          <input name="txtName"  id="txtName" class="form-control">
+                          <input name="txtName"  id="txtName" [(ngModel)]="selectedCustomer.name" class="form-control">
                         </p>
 
                         <p class="form-group">
                           <label for="txtAddress">Customer Address</label>
                           <input  name="txtAddress"  id="txtAddress"
-                                  class="form-control">
+                                  [(ngModel)]="selectedCustomer.address"   class="form-control">
                         </p>
                         <div>
-                          <button type="button"  class="btn btn-info">Save Customer</button>
+                          <button type="submit" class="btn btn-primary" id="btnSave">Save Customer</button>
                           &nbsp;
                           <button  type="button" class="btn btn-danger">Clear</button>
                           &nbsp;
-                          <button type="button" class="btn btn-success">Update Customer</button>
+                          <button type="button" class="btn btn-warning" (click)="updateCustomer()">Update</button>
+                          &nbsp;
+                          <button (click)="getAllCustomers()"  type="button" class="btn btn-warning">View All Customer</button>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
                 <!-- /.card-body -->
+
               </div>
             </div>
             <!-- /.card -->
@@ -93,12 +96,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <tr *ngFor="let customer of cus" (click)="tableRow_Click(customer)" >
+                  <td>{{customer.id}}</td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.address}}</td>
                   <td>
-                    <i class="fa fa-trash fa-2x"></i>
+                    <i (click)="deleteCustomer(customer.id)" class="fa fa-trash fa-2x"></i>
+                    <button style="background-color: red" (click)="deleteCustomer(customer.id)"> delete</button>
                   </td>
                 </tr>
                 </tbody>

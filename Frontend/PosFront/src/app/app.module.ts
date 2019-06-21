@@ -9,6 +9,8 @@ import { OrderComponent } from './view/order/order.component';
 import { MainComponent } from './view/main/main.component';
 import {RouterModule, Routes} from "@angular/router";
 import {DashboardComponent} from "./view/dashboard/dashboard.component";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 const  routes : Routes =[
   {
@@ -46,6 +48,8 @@ const  routes : Routes =[
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
 
 
 
