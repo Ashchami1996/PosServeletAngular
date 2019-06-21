@@ -65,7 +65,7 @@ public class CustomerServelet extends HttpServlet {
                     JsonArrayBuilder customers = Json.createArrayBuilder();
 
                     while (rst.next()) {
-                        String cid = rst.getString("id");
+                        String cid = rst.getString("cid");
                         String name = rst.getString("name");
                         String address = rst.getString("address");
 
@@ -140,6 +140,28 @@ public class CustomerServelet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("working" + req.getParameter("id"));
+        String id = req.getParameter("id");
 
+        if (id != null){
+
+            try {
+                Connection connection = ds.getConnection();
+                PreparedStatement pstm = connection.prepareStatement("DELETE FROM Customer WHERE cid=?");
+                pstm.setObject(1, id);
+                int affectedRows = pstm.executeUpdate();
+                if (affectedRows >  0){
+                    resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                }else{
+                    resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+                }
+            }catch (Exception ex){
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                ex.printStackTrace();
+            }
+
+        }else{
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 }
