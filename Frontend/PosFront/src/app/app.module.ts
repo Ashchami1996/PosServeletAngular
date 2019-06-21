@@ -11,6 +11,9 @@ import {RouterModule, Routes} from "@angular/router";
 import {DashboardComponent} from "./view/dashboard/dashboard.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {ItemService} from "./service/item.service";
+import {OrdersService} from "./service/order.service";
+import {CustomerService} from "./service/customer.service";
 
 const  routes : Routes =[
   {
@@ -54,7 +57,7 @@ const  routes : Routes =[
 
 
   ],
-  providers: [],
+  providers: [ItemService,OrdersService,CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

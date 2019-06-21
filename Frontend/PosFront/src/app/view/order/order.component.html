@@ -18,33 +18,33 @@
             </div>
             <br><br>
             <div class="card-body">
-              <form  class="needs-validation" novalidate>
+              <form (ngSubmit)="saveOrder()" #frmOrder="ngForm">
                 <div class="row">
                   <div class="col-md-2">
                     <label for="countrys">Customer Name</label>
-                    <select (change)="searchCustomer($event)" class="custom-select d-block w-100" id="countrys" required>
+                    <select (change)="searchCustomer($event)" (change)="searchCustomers($event)"   class="custom-select d-block w-100" id="countrys" required>
                       <option value="">select...</option>
-                      <option *ngFor="let customer of cus">{{customer.id}}</option>
+                      <option *ngFor="let customer of cus" >{{customer.id}}</option>
                     </select>
                   </div>
 
 
                   <div class="col-md-3 mb-3">
                     <label >Customer Name</label>
-                    <input type="text" class="form-control" id="customerName" placeholder="" name="name"
+                    <input  type="text" class="form-control" id="customerName" placeholder="" name="name"
                            [(ngModel)]="selectedCustomer1.name"    required>
 
                   </div>
 
                   <div class="col-md-2 ">
-                    <label for="orderid">Order ID</label>
-                    <input #orderid type="text" class="form-control" id="orderid" placeholder="Order Date" value=" " required>
+                    <label for="orderId">Order ID</label>
+                    <input #orderId name="txtName" id="orderId" placeholder="Order Date" value=" " [(ngModel)]="selectedOrders.oid" [(ngModel)]="selectedOrderDetails.oid" class="form-control">
 
                   </div>
 
                   <div class="col-md-2 offset">
                     <label for="orderDate">Order Date</label>
-                    <input #orderDate type="text" class="form-control" id="orderDate" placeholder="Order Date" value=" " required>
+                    <input #oderDate name="txtName" id="orderDate" placeholder="Order Date" value=" "[(ngModel)]="selectedOrders.date" [(ngModel)]="selectedOrderDetails.oid" class="form-control">
 
                   </div>
                 </div>
@@ -62,9 +62,9 @@
 
                     <div class="col-md-2 mb-3">
                       <label for="code">Item Code</label>
-                      <select  (change)="searchItem($event)" class="custom-select d-block w-100" id="code" name="code" required>
+                      <select  (change)="searchItems($event)" (change)="searchItem($event)" class="custom-select d-block w-100" id="code" name="code" required>
                         <option value="">select...</option>
-                        <option *ngFor="let itemss of ite">{{itemss.code}}</option>
+                        <option *ngFor="let itemss of ite" >{{itemss.code}}</option>
                       </select>
                     </div>
 
@@ -76,8 +76,9 @@
                     </div>
 
                     <div class="col-md-2 mb-3">
-                      <label for="unicprice">Unic Price</label>
-                      <input type="text" class="form-control" id="unicprice" [(ngModel)]="selectedItem1.unitPrice" placeholder="" name="unicPrice" required>
+                      <label >Unic Price</label>
+                      <input type="text" class="form-control" id="unicprice"
+                             [(ngModel)]="selectedItem1.unitPrice" [(ngModel)]="selectedOrderDetails.unitPrice" placeholder="" name="unicPrice" required>
 
                     </div>
 
@@ -85,14 +86,14 @@
                     <div class="col-md-2 mb-3">
                       <label for="Qty On Hand">Qty On Hand</label>
                       <input type="text" class="form-control" id="Qty On Hand" placeholder="" name="qtyonhand"
-                             [(ngModel)]="selectedItem1.qty"   required>
+                             [(ngModel)]="selectedItem1.qty"  required>
 
 
                     </div>
                     <div class="col-md-1 mb-3">
                       <div class="row">
                         <label for="qty">qty</label>
-                        <input  type="text" class="form-control" id="qty" placeholder="" name="qty" required>
+                        <input #qty type="text" [(ngModel)]="selectedOrderDetails.qty" class="form-control" id="qty" placeholder="" name="qty" required>
 
 
 
@@ -100,7 +101,7 @@
 
                     </div>
                     <div class="card-body button">
-                      <button class="btn btn-info ">Add To Cart</button>
+                      <button class="btn btn-info " (click)="SelectOrderDetails()">Add To Cart</button>
                     </div>
                   </div>
 
@@ -114,11 +115,18 @@
                   <table id="tblCustomers" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-
+                      <th>Code</th>
+                      <th>Oid</th>
+                      <th>Unit Price</th>
+                      <th>qty</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr *ngFor="let SelectItem of selectedItems">
+                      <td>{{SelectItem.code}}</td>
+                      <td>{{SelectItem.oid}}</td>
+                      <td>{{SelectItem.unitPrice}}</td>
+                      <td>{{SelectItem.qty}}</td>
 
                     </tr>
                     </tbody>
@@ -134,7 +142,8 @@
                   <div class="col-md-3 offset-md-3"></div>
                   <div class="col-md-3 offset-md-3">
                     <label for="total"><h3>Total</h3></label>
-                    <input type="text" class="form-control" id="total" placeholder="" name="total" required>
+                    <input type="text" [(ngModel)]="selectedOrders.total"
+                           class="form-control" id="total" placeholder="" name="total" required>
                   </div>
                 </div>
 
@@ -143,7 +152,7 @@
 
                 <div class="card-footer text-muted">
                   <hr class="mb-4">
-                  <button class="btn btn-success" type="submit"> Place Order</button>
+                  <button type="submit" class="btn btn-primary" id="btnSave">Save Order</button>
                 </div>
               </form>
             </div>
