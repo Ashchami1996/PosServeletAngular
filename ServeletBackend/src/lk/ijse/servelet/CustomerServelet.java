@@ -21,76 +21,105 @@ public class CustomerServelet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try (PrintWriter out = resp.getWriter()) {
-            System.out.println("search" + req.getParameter("id"));
-            if (req.getParameter("id") != null) {
-                resp.setContentType("application/json");
-                System.out.println("search");
-                String id = req.getParameter("id");
-
-                try {
-                    Connection connection = ds.getConnection();
-
-                    PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Customer WHERE cid=?");
-                    pstm.setObject(1, id);
-                    ResultSet rst = pstm.executeQuery();
-
-                    if (rst.next()) {
-                        JsonObjectBuilder ob = Json.createObjectBuilder();
-                        ob.add("id", rst.getString(1));
-                        ob.add("name", rst.getString(2));
-                        ob.add("address", rst.getString(3));
+        try {
 
 
-                        resp.setContentType("application/json");
-                        out.println(ob.build());
-                    } else {
-                        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
-                    }
+            Connection connection = ds.getConnection();
+            Statement stm = connection.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT * FROM Customer");
 
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+            JsonArrayBuilder ab = Json.createArrayBuilder();
+            while (rst.next()) {
+                JsonObjectBuilder ob = Json.createObjectBuilder();
+                ob.add("id", rst.getString("cid"));
+                ob.add("name", rst.getString("name"));
+                ob.add("address", rst.getString("address"));
 
-
-//                                      customer getall
-
-            } else {
-                try {
-                    System.out.println("get All");
-                    Connection connection = ds.getConnection();
-
-                    Statement stm = connection.createStatement();
-                    ResultSet rst = stm.executeQuery("SELECT * FROM Customer");
-
-                    JsonArrayBuilder customers = Json.createArrayBuilder();
-
-                    while (rst.next()) {
-                        String cid = rst.getString("cid");
-                        String name = rst.getString("name");
-                        String address = rst.getString("address");
-
-
-                        JsonObject customer = Json.createObjectBuilder()
-                                .add("id", cid)
-                                .add("name", name)
-                                .add("address", address)
-
-                                .build();
-                        customers.add(customer);
-                    }
-
-                    ((PrintWriter) out).println(customers.build().toString());
-
-                    connection.close();
-                } catch (Exception ex) {
-                    resp.sendError(500, ex.getMessage());
-                    ex.printStackTrace();
-                }
+                ab.add(ob.build());
             }
-        }
+            JsonArray customers = ab.build();
+            resp.setContentType("application/json");
+            resp.getWriter().println(customers);
 
+            connection.close();
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        }
     }
+
+    //    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        try (PrintWriter out = resp.getWriter()) {
+//            System.out.println("search" + req.getParameter("id"));
+//            if (req.getParameter("id") != null) {
+//                resp.setContentType("application/json");
+//                System.out.println("search");
+//                String id = req.getParameter("id");
+//
+//                try {
+//                    Connection connection = ds.getConnection();
+//
+//                    PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Customer WHERE cid=?");
+//                    pstm.setObject(1, id);
+//                    ResultSet rst = pstm.executeQuery();
+//
+//                    if (rst.next()) {
+//                        JsonObjectBuilder ob = Json.createObjectBuilder();
+//                        ob.add("id", rst.getString(1));
+//                        ob.add("name", rst.getString(2));
+//                        ob.add("address", rst.getString(3));
+//
+//
+//                        resp.setContentType("application/json");
+//                        out.println(ob.build());
+//                    } else {
+//                        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+//                    }
+//
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//
+////                                      customer getall
+//
+//            } else {
+//                try {
+//                    System.out.println("get All");
+//                    Connection connection = ds.getConnection();
+//
+//                    Statement stm = connection.createStatement();
+//                    ResultSet rst = stm.executeQuery("SELECT * FROM Customer");
+//
+//                    JsonArrayBuilder customers = Json.createArrayBuilder();
+//
+//                    while (rst.next()) {
+//                        String cid = rst.getString("cid");
+//                        String name = rst.getString("name");
+//                        String address = rst.getString("address");
+//
+//
+//                        JsonObject customer = Json.createObjectBuilder()
+//                                .add("id", cid)
+//                                .add("name", name)
+//                                .add("address", address)
+//
+//                                .build();
+//                        customers.add(customer);
+//                    }
+//
+//                    ((PrintWriter) out).println(customers.build().toString());
+//
+//                    connection.close();
+//                } catch (Exception ex) {
+//                    resp.sendError(500, ex.getMessage());
+//                    ex.printStackTrace();
+//                }
+//            }
+//        }
+//
+//    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

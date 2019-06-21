@@ -17,25 +17,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ItemServelet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/ItemServelet.java">
+      <file leaf-file-name="items.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/view/items/items.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="211" column="9" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
+            <state relative-caret-position="156">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#71#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerServelet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/CustomerServelet.java">
+      <file leaf-file-name="item.service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/service/item.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="178" column="9" lean-forward="true" selection-start-line="138" selection-start-column="8" selection-end-line="178" selection-end-column="9" />
+            <state relative-caret-position="323">
+              <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,9 +56,16 @@
       <list>
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/META-INF/context.xml" />
-        <option value="$PROJECT_DIR$/src/lk/ijse/servelet/CustomerServelet.java" />
         <option value="$PROJECT_DIR$/src/lk/ijse/servelet/CorsFilter.java" />
         <option value="$PROJECT_DIR$/src/lk/ijse/servelet/ItemServelet.java" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/environments/environment.ts" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/service/customer.service.ts" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/view/manage-customer/manage-customer.component.html" />
+        <option value="$PROJECT_DIR$/src/lk/ijse/servelet/CustomerServelet.java" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/view/manage-customer/manage-customer.component.ts" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/view/items/items.component.ts" />
+        <option value="$PROJECT_DIR$/../Frontend/PosFront/src/app/service/item.service.ts" />
       </list>
     </option>
   </component>
@@ -1306,18 +1313,50 @@
           <expand>
             <path>
               <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServeletBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServeletBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServeletBackend" type="462c0819:PsiDirectoryNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="servelet" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ServeletBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="PosFront" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="items" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1329,15 +1368,17 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Frontend" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/pos-servelet-and-angular-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/../Frontend/PosFront/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ashan Chamika\Desktop\3rd sem\Git Repo\PosServeletAngular\Frontend\PosFront\src\app\service" />
       <recent name="D:\ServeletBackend\src" />
     </key>
   </component>
@@ -1479,12 +1520,12 @@
       <updated>1561097102754</updated>
       <workItem from="1561097109964" duration="945000" />
       <workItem from="1561098190131" duration="6859000" />
-      <workItem from="1561107924482" duration="2402000" />
+      <workItem from="1561107924482" duration="9745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10206000" />
+    <option name="totallyTimeSpent" value="17549000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1496,6 +1537,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="TypeScript" weight="0.32843137" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1509,9 +1551,9 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32843137" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32843137" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32843137" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -1598,22 +1640,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/CustomerServelet.java">
+    <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/ItemServelet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="178" column="9" lean-forward="true" selection-start-line="138" selection-start-column="8" selection-end-line="178" selection-end-column="9" />
+        <state relative-caret-position="193">
+          <caret line="211" column="9" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/ItemServelet.java">
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/environments/environment.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="211" column="9" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
+        <state relative-caret-position="51">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/dto/ItemDto.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/dto/OrderDetailsDto.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/dto/OrderDto.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/service/customer.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lk/ijse/servelet/CustomerServelet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/view/manage-customer/manage-customer.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="71" column="87" selection-start-line="71" selection-start-column="87" selection-end-line="71" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/view/manage-customer/manage-customer.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="65" column="15" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/view/items/items.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Frontend/PosFront/src/app/service/item.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
